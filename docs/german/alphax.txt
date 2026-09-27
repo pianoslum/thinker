@@ -139,14 +139,14 @@ Monolith,           Disable, Monolith,            Disable,  8,  Monolith plaz., 
 ; RESSOURCENINFORMATION
 ;
 ; Ressourcenproduktion (Nahrung, Mineralien, Energie, <ungebraucht>) für
-; spezielle Felder. In normalen Feldern werden diese Werte
+; spezielle Felder. In Landfeldern werden diese Werte
 ; durch Temperatur, Niederschlag, Felsen, etc. des Felds bestimmt.
 ;
 ; "Bonus-Feld": Der Wert für eine bestimmte Kategorie wird zur Produktion eines
 ; Felds addiert.
 ;
 ; "Verbessertes Land" bezieht sich auf Farmen, Minen, Solarkollektoren
-; "Verbessertes Meer" bezieht sich auf Entsalzung, Plattformen, Kraftwerke
+; "Verbessertes Meer" bezieht sich auf Seetangfarmen, Bergbauplattformen, Gezeitenkraftwerke
 ;
 #RESOURCEINFO
 Ozean-Feld,          1, 0, 0, 0,
@@ -596,7 +596,7 @@ Rakete,      Rakete-,  Rak.,  R
 ; Reak.     = Reaktor-Level 1-4
 ;
 #UNITS
-23
+26
 Koloniekapsel,           Infanterie,     Koloniekapsel, Scout,  8,  0,  0, None,    -1, 00000000000000000000000000
 Former,                  Infanterie,     Former,        Scout,  9,  0,  0, Ecology, -1, 00000000000000000000000000
 Scout-Patrouille,        Infanterie,     Geschütz,      Scout,  3,  0,  0, None,    -1, 00000000000000000000000000
@@ -607,10 +607,10 @@ Sondierteam,             Speeder,        Sondierteam,   Scout,  11, 0,  0, PlaNe
 Ausserird. Artefakt,     Infanterie,     Artefakt,      Scout,  12, 10, 0, Disable, 2,  00000000000000000000000000
 Psycho-Viren,            Infanterie,     PSI,           PSI,    1,  5,  0, CentEmp, 3,  00000000000000000000000000
 Insel der Tiefe,         Tragflügelboot, PSI,           PSI,    7,  8,  4, CentMed, -1, 00000000000000000000000000
-Heuschr. v. Chiron,      Grav-Schiff,    PSI,           PSI,    4,  10, 0, CentGen, -1, 00000000000000000000000000
+Heuschr. v. Chiron,      Grav-Schiff,    PSI,           PSI,    4,  10, 0, CentGen, -1, 00000000000000000000100000
 Unity-Rover,             Speeder,        Geschütz,      Scout,  3,  0,  0, Disable, -1, 00000000000000000000000000
-Unity-Aufkl.hubschr.,    Kopter,         Geschütz,      Scout,  4,  0,  0, Disable, -1, 00000000000000000000000000
-Unity-Tragflügelb.,      Tragflügelboot, Transport,     Scout,  7,  0,  0, Disable, -1, 10000000000000000000000000
+Unity-Aufkl.hubschr.,    Kopter,         Geschütz,      Scout,  4,  0,  0, Disable, -1, 00000000000000000000100000
+Unity-Tragflügelb.,      Tragflügelboot, Transport,     Scout,  7,  0,  0, Disable, -1, 00100000000000000000000000
 Seeschleichen,           Tragflügelboot, PSI,           PSI,    6,  6,  0, CentPsi, 4,  00000000000000000001000000
 Sporenwerfer,            Infanterie,     PSI,           PSI,    0,  5,  0, Bioadap, 5,  00000000001000000000000000
 SchlachtogerMK1,         Infanterie,     R-Laser,       3-Res,  0,  10, 0, Disable, 6,  00010000000000000000000000
@@ -620,6 +620,9 @@ Fungus-Turm,             Infanterie,     PSI,           PSI,    3,  0,  0, Disab
 Unity-Abbaulaser,        Infanterie,     Laser,         Scout,  0,  0,  0, Disable, -1, 00000000000000000000000000
 See-Fluchtkapsel,        Tragflügelboot, Koloniekapsel, Scout,  8,  0,  0, Disable, -1, 00000000000000000000000000
 Unity-Kampfhubschrauber, Tragflügelboot, Geschütz,      Scout,  -1, 0,  0, Disable, -1, 00000000000000000000000000
+Trance-Infanterie,       Infanterie,     Geschütz,      Scout,  3,  0,  0, Brain,   -1, 00000001000000000000000000
+Polizei-Garnison,        Infanterie,     Geschütz,      Scout,  2,  0,  0, Integ,   -1, 00010000000000000000000000
+Abwurf-Koloniekapsel,    Infanterie,     Koloniekapsel, Scout,  8,  0,  0, MindMac, -1, 00000000000000000000010000
 
 ;
 ; Basis-Einrichtungen
@@ -630,7 +633,7 @@ Unity-Kampfhubschrauber, Tragflügelboot, Geschütz,      Scout,  -1, 0,  0, Disab
 ; Preis    = Baukosten in Mineralien (x Mineralienfaktor in RULES)
 ; Wartung  = Wartungskosten in Energie pro Runde
 ; Voraus.  = Technologische Voraussetzungen (siehe TECHNOLOGY)
-; Gratis   = Disable
+; Gratis   = Technologie für kostenlose Einrichtung in neuen Basen
 ; Effekt   = Kurzbeschreibung des Effekts
 ; KI-Kampf = Entspricht den Einstellungen -1, 0 oder 1 für 'Agressivität' der KI
 ; KI-Mil   = Militärwert 1 oder 0 (Interesse an Macht)
@@ -655,12 +658,12 @@ Paradiesgarten,                 12,  4, SentEco, Disable, +2 Talente
 Baumfarm,                       12,  3, EnvEcon, Disable, Ökon./Psycho/Wald
 Hybrider Wald,                  24,  4, PlaEcon, Disable, Ökon./Psycho/Wald
 Fusionslabor,                   12,  3, Fusion,  Disable, Ökon. und Labor-Bonus
-Quantenlabor,                   24,  4, QuanMac, Disable, Ökon. und Labor-Bonus
+Quantenlabor,                   24,  4, Quantum, Disable, Ökon. und Labor-Bonus
 Forsch.hospital,                12,  3, Gene,    Disable, Labor und Psycho-Bonus
 Nanohospital,                   24,  4, HomoSup, Disable, Labor und Psycho-Bonus
 Roboterfabrik,                  20,  4, IndRob,  Disable, Mineralien-Bonus
 Nanoreplikator,                 32,  6, NanEdit, Disable, Mineralien-Bonus
-Quanten- Konverter,             20,  5, Quantum, Disable, Mineralien-Bonus
+Quanten- Konverter,             20,  5, QuanMac, Disable, Mineralien-Bonus
 Genarbeiter- Fabrik,            10,  2, Viral,   Disable, Mineralien; mehr Drohnen
 Strafsphäre,                    10,  2, MilAlg,  Disable, keine Drohnen/-50% Tech
 Wohnkomplex,                    8,   2, IndAuto, Disable, Bevölkerungsgrenze steigt
@@ -720,7 +723,7 @@ Das Planeten- Verkehrssyst.,    30,  0, IndAuto, Disable, Neue Basen ab Größe 3,
 Die Xenoempathie- Kuppel,       30,  0, CentMed, Disable, Fungus-Bewegungsbonus,                         0, 1, 0, 0, 2,
 Der Neural- Verstärker,         30,  0, Neural,  Disable, PSI-Abwehr +50%,                               0, 2, 0, 0, 1,
 Das Meeres- Kontr.zentrum,      30,  0, DocInit, Disable, Seebewegung +2; Marinestützpunkte,             1, 2, 0, 0, 0,
-Die Planeten- Datalinks,        30,  0, Cyber,   Disable, Jede Technologie, die 3 anderen bekannt ist,   0, 0, 1, 0, 1,
+Die Planeten- Datalinks,        30,  0, Cyber,   Disable, Jede 3 anderen bekannte Technologie,           0, 0, 1, 0, 1,
 Das Synchrotron,                30,  0, E=Mc2,   Disable, Labors +100% auf dieser Basis,                 0, 0, 2, 0, 0,
 Die asketischen Tugenden,       30,  0, PlaEcon, Disable, Bevölkerungsgrenze gelockert; +1 POLICE,       0, 0, 0, 1, 2,
 Das Langlebigkeits- Serum,      30,  0, BioEng,  Disable, Weniger Drohnen oder mehr Profit,              0, 0, 0, 2, 1,
@@ -731,7 +734,7 @@ Die Universaltheorie,           40,  0, Unified, Disable, Labors +100% auf diese
 Der Traum- Manipulator,         40,  0, WillPow, Disable, PSI-Angriff +50%,                              0, 2, 0, 0, 1,
 Der Übersetzungs- Computer,     40,  0, HomoSup, Disable, Zwei Gratis-Tech.,                             0, 0, 2, 0, 0,
 Das Rückgrat des Netzwerks,     40,  0, DigSent, Disable, +1 Labor pro Handel/Netzknoten,                0, 0, 2, 0, 0,
-Die Nanofabrik,                 40,  0, IndRob,  Disable, Reparatureinheiten, geringe Aufrüstungskosten, 1, 2, 0, 0, 0,
+Die Nanofabrik,                 40,  0, IndRob,  Disable, Einheiten reparieren; geringe Aufrüstungskosten, 1, 2, 0, 0, 0,
 Die lebende Raffinerie,         40,  0, Space,   Disable, +2 UNTERSTÜTZUNG (sozial),                     0, 1, 0, 1, 1,
 Die Klon-Behälter,              50,  0, BioMac,  Disable, Bevölkerungswachstum auf allen Basen,          0, 1, 1, 1, 2,
 Die integrierte Kolonie,        50,  0, HAL9000, Disable, Wartung halbiert; Extra Polizei,               0, 1, 0, 2, 0,
@@ -931,7 +934,7 @@ Gedankenkon.,      WillPow, ++POLICE,   ++MORALE,  ++PROBE,   ---SUPPORT
 #SOCPOLICE
 -5, Zwei zusätzliche Drohnen für jeder Militär-Einheit außerhalb ihres Territoriums
 -4, Zusätzliche Drohne für jeder Militär-Einheit außerhalb ihres Territoriums
--3, Zusätzliche Drohne, falls sich mehr als eine Miltär-Einheit außerhalb ihres Territoriums befindet
+-3, Zusätzliche Drohne bei mehr als einer Militär-Einheit außerhalb ihres Territoriums
 -2, Militär-Einheiten können nicht als Polizei eingesetzt werden. Kein Nervschneiden.
 -1, Eine Polizei-Einheit erlaubt. Kein Nervschneiden.
  0, Eine Militär-Einheit kann als Polizei eingesetzt werden
@@ -1087,8 +1090,8 @@ Transzendent,
 ;                 (125 bedeutet z.B. daß jede Entdeckung 125%
 ;                 der normalen Anzahl an Forschungspunkten
 ;                 kostet).
-;   SHARETECH   = Sie erwerben jede Technologie, die der Anzahl
-;                 der anderen Spielern bekannt sind
+;   SHARETECH   = Sie erwerben jede Technologie, die # anderen Spielern bekannt ist.
+;                 Wird nur angewendet, wenn eine andere Gruppierung eine Technologie entdeckt.
 ;   TERRAFORM   = Halbiert die Kosten für Terraform Auf/Ab
 ;   SOCIAL      = Benennt einen Faktor in der entsprechenden
 ;                 Gesellschaftseffekt-Kategorie
@@ -1125,9 +1128,9 @@ Transzendent,
 ;   PROBECOST   = Prozentwert der Standardkosten für Aktionen von Sondierteams (Vorgabewert ist 100)
 ;   DEFENSE     = Prozent-Faktor für Verteidigungskämpfe (Vorgabewert ist 100)
 ;   OFFENSE     = Prozent-Faktor für Angriffskämpfe (Vorgabewert ist 100)
-;   TECHSHARE   = In Zusammenhang mit SHARETECH erfordert es, daß man die anderen Gruppierungen
-;                                  ausspioniert (über Sondierteams, die Gilde der Empathen, den Gouverneur oder einen
-;                                  Pakt). Parameter wird ignoriert.
+;   TECHSHARE   = Sie erwerben jede Technologie, die # anderen Spielern bekannt ist, die man
+;                 gerade ausspioniert (über Sondierteams, die Gilde der Empathen, den Gouverneur oder einen Pakt).
+;                 Wird nur angewendet, wenn eine andere Gruppierung eine Technologie entdeckt.
 ;   TECHSTEAL = Gruppierung stiehlt eine Technologie, wenn sie eine Basis einnimmt. Parameter wird ignoriert.
 ;
 ; GESELLSCHAFTS-PRIORITÄTEN:
@@ -1254,9 +1257,9 @@ Vereint Euch unter mir als Oberbefehlshaber,  MindMac,  Diplomatischer Sieg; Spi
 Fusionskern der Unity retten,         Orbital, +500 Energieeinheiten pro Gruppierung
 Globales Handelsabkommen,             PlaEcon, Handelsertrag verdoppelt
 Globales Handelsabkommen kündigen,    PlaEcon, Handelsertrag halbiert
-Solarschirm starten,                  Space,   Globale Abkühlung, Meeresspiegel sinkt
-Solarschirm vergrößern,               Space,   Globale Abkühlung, Meeresspiegel sinkt
-Eiskappen schmelzen,                  EcoEng2, Globale Erwärmung, Meeresspiegel steigt
+Solarschirm starten,                  Space,   Globale Abkühlung; Meeresspiegel sinkt
+Solarschirm vergrößern,               Space,   Globale Abkühlung; Meeresspiegel sinkt
+Eiskappen schmelzen,                  EcoEng2, Globale Erwärmung; Meeresspiegel steigt
 UN-Charta kündigen,                   MilAlg,  Verbot von Greueltaten aufgehoben
 UN-Charta wieder in Kraft setzen,     MilAlg,  Verbot von Greueltaten in Kraft
 ...,                                  Disable, ...
